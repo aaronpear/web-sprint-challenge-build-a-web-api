@@ -2,7 +2,7 @@ const Project = require('./projects-model.js');
 
 async function validateProjectId(req, res, next) {
     try {
-      const project = await Project.get(req.params.id);
+        const project = await Project.get(req.params.id);
         if (!project) {
             res.status(404).json({ message: "Project ID not found" });
         } else {
@@ -10,7 +10,7 @@ async function validateProjectId(req, res, next) {
             next();
         }
     } catch (err) {
-        res.status(500).json({ message: "error validating project ID" });
+        res.status(500).json({ message: "Error validating project ID" });
     }
   }
   
