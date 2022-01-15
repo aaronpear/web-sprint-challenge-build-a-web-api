@@ -1,5 +1,5 @@
 const Action = require('./actions-model.js');
-const Project = require('./projects-model.js');
+const Project = require('../projects/projects-model.js');
 
 async function validateActionId(req, res, next) {
     try {
@@ -18,6 +18,7 @@ async function validateActionId(req, res, next) {
   async function validateAction(req, res, next) {
     const { project_id, description, notes } = req.body;
 
+    // Might have been possible to just throw in the existing validateProjectId here?
     try {
         const project = await Project.get(project_id);
         if (!project) {
